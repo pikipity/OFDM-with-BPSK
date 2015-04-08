@@ -55,8 +55,9 @@ function BER_vs_SNR_OFDM_with_BPSK(varargin)
     BPSKpath=dpskmod(path,BPSKNum);
     % ifft
     ifftpath=ifft(BPSKpath,NoSub);
-    % prepare to transmit
+    % Add cyclic prefix
     Tranpath=zeros(size(ifftpath,1)+LenCyclic,size(ifftpath,2));
+    Tranpath(1:LenCyclic,:)=ifftpath((end-LenCyclic+1):end,:);
     Tranpath((1+LenCyclic):end,:)=ifftpath;
     %% Transmit and Receiver
     % Transmit
@@ -97,7 +98,7 @@ function BER_vs_SNR_OFDM_with_BPSK(varargin)
     figure(1);
     semilogy(SNR,BER,'--dr','linewidth',2);
     grid on
-    axis([0 11 10^-6 0.15])
+    axis([0 11 10^-6 0.2])
     xlabel('SNR');
     ylabel('BER');
     title('Simulation Results')
@@ -105,7 +106,7 @@ function BER_vs_SNR_OFDM_with_BPSK(varargin)
     theoryBER = (1/2)*erfc(sqrt(10.^(SNR/10)));
     semilogy (SNR,theoryBER,'--sb','linewidth',2);
     grid on
-    axis([0 11 10^-6 0.15])
+    axis([0 11 10^-6 0.2])
     xlabel('SNR');
     ylabel('BER');
     title('Theory Results')
@@ -114,7 +115,7 @@ function BER_vs_SNR_OFDM_with_BPSK(varargin)
     hold on;
     semilogy (SNR,theoryBER,'--sb','linewidth',2);
     grid on
-    axis([0 11 10^-6 0.15])
+    axis([0 11 10^-6 0.2])
     xlabel('SNR');
     ylabel('BER');
     legend('Simulation Results','Theory Results');
