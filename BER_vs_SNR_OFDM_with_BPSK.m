@@ -95,29 +95,10 @@ function BER_vs_SNR_OFDM_with_BPSK(varargin)
         disp(['SNR: ' num2str(SNR(SNRNo)) '. BER: ' num2str(BER(SNRNo))])
     end
     %% Plot result
-    figure(1);
+    figure;
     semilogy(SNR,BER,'--dr','linewidth',2);
     grid on
-    axis([0 11 10^-6 0.2])
     xlabel('SNR');
     ylabel('BER');
     title('Simulation Results')
-    figure(2);
-    theoryBER = (1/2)*erfc(sqrt(10.^(SNR/10)));
-    semilogy (SNR,theoryBER,'--sb','linewidth',2);
-    grid on
-    axis([0 11 10^-6 0.2])
-    xlabel('SNR');
-    ylabel('BER');
-    title('Theory Results')
-    figure(3);
-    semilogy(SNR,BER,'--dr','linewidth',2);
-    hold on;
-    semilogy (SNR,theoryBER,'--sb','linewidth',2);
-    grid on
-    axis([0 11 10^-6 0.2])
-    xlabel('SNR');
-    ylabel('BER');
-    legend('Simulation Results','Theory Results');
-    title('Comparision Between Simulation Results and Theory Results')
 end
