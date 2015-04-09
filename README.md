@@ -19,8 +19,4 @@ Simulate the OFDM system with BPSK modulation method and plot the figure of BER 
 
 Parameters are all default values
 
-![Simulation Results](https://raw.githubusercontent.com/pikipity/OFDM-with-BPSK/master/Simulation%20Results/Simulation%20Results.png)
-
-![Theoretical Results](https://github.com/pikipity/OFDM-with-BPSK/blob/master/Simulation%20Results/Theory%20Results.png)
-
-![Compare](https://raw.githubusercontent.com/pikipity/OFDM-with-BPSK/master/Simulation%20Results/Compare.png)
+![Simulation Results](https://raw.githubusercontent.com/pikipity/OFDM-with-BPSK/master/Simulation%20Results.png)
